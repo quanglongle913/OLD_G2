@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8686835403407205156}
   - component: {fileID: 8686835403407205163}
   - component: {fileID: 8686835403407205162}
-  - component: {fileID: 8686835403407205161}
   m_Layer: 6
   m_Name: Floor
   m_TagString: Floor
@@ -101,29 +100,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8686835403407205161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8686835403407205160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4cd39c82dcbe444d96bec8cce1ee4be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numOfItemsToSpawn: 5
-  brickPrefabs:
-  - {fileID: 5745065085798297818, guid: 33650e5e13286d548b6055e61d2b47b2, type: 3}
-  - {fileID: 5745065085798297818, guid: 3e952b1541b031e4591638e04050c96f, type: 3}
-  - {fileID: 5745065085798297818, guid: 446590a568e130948a5c93f50578c03e, type: 3}
-  - {fileID: 5745065085798297818, guid: 6aa89f744c32822439e9d46a306d85de, type: 3}
-  brickSpawnPoint: {fileID: 8686835403453873560}
-  isStartArea: 1
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1 &8686835403447386746
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +268,6 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 8686835403447386747}
     m_Modifications:
     - target: {fileID: 3883333468705320144, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
@@ -343,8 +318,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_AddedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 5558251929100293229, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874290451209, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874719109125, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739872689155857, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739873291150222, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739873684800084, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739873970998649, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874676062697, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874497448705, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874364951621, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739872680403391, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874414235207, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874337580537, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
 --- !u!4 &8686835403848587331 stripped
 Transform:
@@ -356,7 +343,6 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 8686835403447386747}
     m_Modifications:
     - target: {fileID: 3883333468705320144, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
@@ -407,8 +393,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_AddedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 2297739874364951621, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874290451209, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874719109125, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739872689155857, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739873291150222, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739873684800084, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739873970998649, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874676062697, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874497448705, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739872680403391, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874337580537, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874414235207, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 5558251929100293229, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
 --- !u!4 &5578141282490149611 stripped
 Transform:
@@ -420,7 +418,6 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 8686835403447386747}
     m_Modifications:
     - target: {fileID: 3883333468705320144, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
@@ -475,8 +472,20 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.147
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_AddedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 5558251929100293229, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874719109125, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874290451209, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739872689155857, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739873291150222, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739873684800084, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739873970998649, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874676062697, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874497448705, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874364951621, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739872680403391, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874414235207, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
+    - {fileID: 2297739874337580537, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0364122bdcc38264d8d9b065447d4b5f, type: 3}
 --- !u!4 &5578141283559169426 stripped
 Transform:
