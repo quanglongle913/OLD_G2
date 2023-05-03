@@ -3,41 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody),typeof(BoxCollider))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : Character
 {
 
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private FixedJoystick _fixedJoystick;
-    [SerializeField] private Animator _animator;
+   
 
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float moveSpeed;
 
-    private string currentAnin;
-    private void FixedUpdate()
+   
+    public void Update()
     {
-        _rigidbody.velocity = new Vector3(_fixedJoystick.Horizontal * _moveSpeed, _rigidbody.velocity.y,_fixedJoystick.Vertical * _moveSpeed);
+        _rigidbody.velocity = new Vector3(_fixedJoystick.Horizontal * moveSpeed, _rigidbody.velocity.y,_fixedJoystick.Vertical * moveSpeed);
         if (_fixedJoystick.Horizontal != 0 || _fixedJoystick.Vertical != 0)
         {
             transform.rotation = Quaternion.LookRotation(-_rigidbody.velocity);
-            ChangeAnin("Run");
+            ChangeAnim("Run");
             //Debug.Log("Horizontal: " + _fixedJoystick.Horizontal + "|| Vertical: " + _fixedJoystick.Vertical);
         }
         else if (_fixedJoystick.Horizontal == 0 || _fixedJoystick.Vertical == 0)
         {
-            ChangeAnin("Idle");
+            ChangeAnim("Idle");
             //Debug.Log("Horizontal: " + _fixedJoystick.Horizontal + "|| Vertical: " + _fixedJoystick.Vertical);
         }
        
-
-    }
-    private void ChangeAnin(string aninName)
-    {
-        if (currentAnin != aninName)
-        {
-            _animator.ResetTrigger(aninName);
-            currentAnin = aninName;
-            _animator.SetTrigger(currentAnin);
-        }
 
     }
 }
