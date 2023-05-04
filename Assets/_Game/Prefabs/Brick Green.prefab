@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5745065085798297817}
   - component: {fileID: 5745065085798297816}
   - component: {fileID: 5745065085798297823}
+  - component: {fileID: -7436949459964598599}
+  - component: {fileID: 4057127115350399357}
   m_Layer: 7
   m_Name: Brick Green
   m_TagString: Brick
@@ -97,3 +99,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7436949459964598599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5745065085798297818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767b029a75d46544963054c975ab516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4057127115350399357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5745065085798297818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26fff492ad1c6284391eae5e9634c76a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initPoolSize: 30
+  objectToPool: {fileID: -7436949459964598599}

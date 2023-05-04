@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+public class BrickObjPool_Old : MonoBehaviour
 {
     [SerializeField] private GameObject prefabsBrickGreen;
     [SerializeField] private GameObject prefabsBrickPurple;
@@ -15,9 +15,6 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private int Column;
 
     private int poolSize;
-    //private Dictionary<GameObject,int> BrickList;
-    private List<int> numIndex;
-
 
     private void Awake()
     {
@@ -33,10 +30,15 @@ public class ObjectPool : MonoBehaviour
         {
             for (int j = 0; j < Column; j++) 
             {
+                
                 int index = Row * j + i;
                 //row =12 column =10 ///TEST LOGIC
                 //i=0 =>z=5 i=1=>z=4 => Z=5-i
                 //j=0 x=-6,j=1 x=-5,j=2 x=-4,j=3 x=-3, x=5 j=10
+                if (PoolParent.gameObject.transform.GetChild(index).gameObject == null)
+                {
+                    return;
+                }
                 PoolParent.gameObject.transform.GetChild(index).gameObject.transform.position = new Vector3((j-(Row/2)),0,((Column/2)-i));
                 PoolParent.gameObject.transform.GetChild(index).gameObject.SetActive(true);
             }

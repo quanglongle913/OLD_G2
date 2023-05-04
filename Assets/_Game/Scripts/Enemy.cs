@@ -27,12 +27,15 @@ public class Enemy : Character
     public override void OnInit()
     {
         base.OnInit();
+        //Debug.Log("childCount: " + brickParent.gameObject.transform.childCount);
+        
         for (int i = 0; i < brickParent.gameObject.transform.childCount; i++)
         {
             if (brickParent.gameObject.transform.GetChild(i).gameObject.name == brickNameObj)
             {
                 if (listBrickObject != null)
                 {
+                    //Debug.Log("OK1");
                     listBrickObject.Add(brickParent.gameObject.transform.GetChild(i).gameObject);
                 }
             }
@@ -48,18 +51,20 @@ public class Enemy : Character
             {
                 if (listBrickObject[i].gameObject.activeSelf)
                 {
-                    //Debug.Log("OK"); //code run enemy
+                    //Debug.Log("OK1"); //code run enemy
                     isBrickTarget = false;
                     brickTarget = listBrickObject[i].gameObject;
-                    StartCoroutine(ExampleCoroutine("Run", 0.2f, brickTarget, true));
+                    StartCoroutine(ExampleCoroutine("Run", 0.1f, brickTarget, true));
                 }
             }
         }
-        //Debug.Log("OK");
         
+        if (brickTarget == null)
+            return;
         if (IsInMeleeRangeOf(brickTarget.transform) && !isBrickTarget)
         {
-            StartCoroutine(ExampleCoroutine("Idle", 0.2f, brickTarget,false));
+            //Debug.Log("OK2");
+            StartCoroutine(ExampleCoroutine("Idle", 0.1f, brickTarget,false));
             //MoveTowards(brickTarget.transform);
             
             brickTarget.SetActive(false);
@@ -76,7 +81,7 @@ public class Enemy : Character
 
         if (isRotation)
         {
-            Debug.Log("Rotation");
+            //Debug.Log("Rotation");
             RotateTowards(ObjTarget.transform);
         }
         
