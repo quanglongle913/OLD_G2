@@ -11,10 +11,8 @@ namespace DesignPatterns.ObjectPool
        
         [Tooltip("Pool Parent Object")]
         [SerializeField] private GameObject PoolParent;
-
-        //[SerializeField] private GameObject projectile;
-
-        [SerializeField] float cooldownWindow = 0.1f;
+        [SerializeField] private GameObject projectile;
+        //[SerializeField] float cooldownWindow = 5.0f;
         [Tooltip("Reference to Object Pool")]
         [SerializeField] private ObjectPool objectPoolBrickGreen;
         [SerializeField] private ObjectPool objectPoolBrickPurple;
@@ -27,46 +25,31 @@ namespace DesignPatterns.ObjectPool
         [SerializeField] private int Row;
         [SerializeField] private int Column;
 
+        [SerializeField] private List<ObjectPool> ListPoolBrick;
+
         private int poolSize;
- 
-        private void Awake()
-        {
-            
-        }
+        //float nextTimeToShoot = 0;
+
         private void Start()
         {
-                poolSize = Row * Column;
-                GenerateAllObject();
-                SetPollBrickPos();
+            OnInit();
         }
-        private void FixedUpdate()
+        private void OnInit()
         {
-            /*// shoot if we have exceeded delay
-            if (Input.GetButton("Fire1") && Time.time > nextTimeToShoot && objectPool != null)
-            {
+            StartCoroutine(OnInitCoroutine(0.1f));
+        }
+        IEnumerator OnInitCoroutine(float time)
+        {
 
-                // get a pooled object instead of instantiating
-                GameObject bulletObject = objectPool.GetPooledObject().gameObject;
-
-                if (bulletObject == null)
-                    return;
-
-                bulletObject.SetActive(true);
-
-                // align to gun barrel/muzzle position
-                bulletObject.transform.SetPositionAndRotation(muzzlePosition.position, muzzlePosition.rotation);
-
-                // move projectile forward
-                bulletObject.GetComponent<Rigidbody>().AddForce(bulletObject.transform.forward * muzzleVelocity, ForceMode.Acceleration);
-
-                // turn off after a few seconds
-                ExampleProjecBrickPool projectile = bulletObject.GetComponent<ExampleProjecBrickPool>();
-                projectile?.Deactivate(); //?  if's actived -> call Deactivate
-
-                // set cooldown delay
-                nextTimeToShoot = Time.time + cooldownWindow;
-
-            }*/
+            yield return new WaitForSeconds(time);
+            poolSize = Row * Column;
+            ListPoolBrick = new List<ObjectPool>();
+            ListPoolBrick.Add(objectPoolBrickGreen);
+            ListPoolBrick.Add(objectPoolBrickPurple);
+            ListPoolBrick.Add(objectPoolBrickRed);
+            ListPoolBrick.Add(objectPoolBrickYellow);
+            GenerateAllObject();
+            SetPollBrickPos();
         }
         private void SetPollBrickPos()
         {
@@ -88,27 +71,23 @@ namespace DesignPatterns.ObjectPool
 
         }
 
-        private void GenerateNewObject(ObjectPool objectPoolBrickColor)
+        private void GenerateNewObject(int index)
         {
-            //Debug.Log(objectPool.gameObject.name);
-            if (objectPoolBrickColor != null)
-            {
-                //Basic 
-                //GameObject brickObject = Instantiate(brickObj);
-
-                //==================================================
-                //New Code 
-                // get a pooled object instead of instantiating
-                GameObject brickObject = objectPoolBrickColor.GetPooledObject().gameObject.gameObject;
-                
-                if (brickObject == null)
+            //Debug.Log(ListPoolBrick.Count +" : Index"+ index);
+            if (ListPoolBrick.Count >= 4) {
+                if (ListPoolBrick[index-1] != null)
                 {
-                    return;
-                }
+                    GameObject brickObject = ListPoolBrick[index-1].GetPooledObject().gameObject.gameObject;
 
-                brickObject.transform.SetParent(PoolParent.transform);
-                brickObject.SetActive(true);
+                    if (brickObject == null)
+                    {
+                        return;
+                    }
+                    brickObject.transform.SetParent(PoolParent.transform);
+                    brickObject.SetActive(true);
+                }
             }
+            
             
         }
         private void GenerateAllObject()
@@ -123,7 +102,7 @@ namespace DesignPatterns.ObjectPool
                         if (coun1 < poolSize / 4)
                         {
                             coun1++;
-                            GenerateNewObject(objectPoolBrickGreen);
+                            GenerateNewObject(randomIndex);
                         }
                         else
                         {
@@ -148,7 +127,7 @@ namespace DesignPatterns.ObjectPool
                         if (coun2 < poolSize / 4)
                         {
                             coun2++;
-                            GenerateNewObject(objectPoolBrickPurple);
+                            GenerateNewObject(randomIndex);
                         }
                         else
                         {
@@ -172,7 +151,7 @@ namespace DesignPatterns.ObjectPool
                         if (coun3 < poolSize / 4)
                         {
                             coun3++;
-                            GenerateNewObject(objectPoolBrickRed);
+                            GenerateNewObject(randomIndex);
                         }
                         else
                         {
@@ -196,7 +175,7 @@ namespace DesignPatterns.ObjectPool
                         if (coun4 < poolSize / 4)
                         {
                             coun4++;
-                            GenerateNewObject(objectPoolBrickYellow);
+                            GenerateNewObject(randomIndex);
                         }
                         else
                         {

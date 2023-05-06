@@ -18,23 +18,44 @@ namespace DesignPatterns.ObjectPool
             pooledObject = GetComponent<PooledObject>();
         }
 
-        public void Deactivate()
+        public void Deactivate(GameObject gameObject)
         {
             StartCoroutine(DeactivateRoutine(timeoutDelay));
+        }
+        public void Activate(GameObject gameObject)
+        {
+            StartCoroutine(ActivateRoutine(timeoutDelay));
         }
 
         IEnumerator DeactivateRoutine(float delay)
         {
+            //Debug.Log(": " + Time.deltaTime);
+            
             yield return new WaitForSeconds(delay);
-
+            gameObject.SetActive(false);
             // reset the moving Rigidbody
-            Rigidbody rBody = GetComponent<Rigidbody>();
+            /*Rigidbody rBody = GetComponent<Rigidbody>();
             rBody.velocity = new Vector3(0f, 0f, 0f);
-            rBody.angularVelocity = new Vector3(0f, 0f, 0f);
+            rBody.angularVelocity = new Vector3(0f, 0f, 0f);*/
 
             // set inactive and return to pool
-            pooledObject.Release();
-            gameObject.SetActive(false);
+            //pooledObject.Release();
+            //gameObject.SetActive(true);
+        }
+        IEnumerator ActivateRoutine(float delay)
+        {
+
+            gameObject.SetActive(true);
+            yield return new WaitForSeconds(delay);
+            
+            // reset the moving Rigidbody
+            /* Rigidbody rBody = GetComponent<Rigidbody>();
+             rBody.velocity = new Vector3(0f, 0f, 0f);
+             rBody.angularVelocity = new Vector3(0f, 0f, 0f);*/
+
+            // set inactive and return to pool
+            //pooledObject.Release();
+            gameObject.SetActive(true);
         }
     }
 }

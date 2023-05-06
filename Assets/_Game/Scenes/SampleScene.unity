@@ -837,10 +837,11 @@ GameObject:
   - component: {fileID: 387914496}
   - component: {fileID: 387914495}
   - component: {fileID: 387914494}
-  - component: {fileID: 387914493}
+  - component: {fileID: 387914499}
+  - component: {fileID: 387914498}
   m_Layer: 8
   m_Name: AIBot Red
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -863,24 +864,6 @@ Transform:
   m_Father: {fileID: 192242596}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &387914493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 387914491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12c2bc1bf8ec6b5448b851e74008c438, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 387914497}
-  agent: {fileID: 387914494}
-  brickParent: {fileID: 493540320}
-  brickNameObj: Brick Red(Clone)
-  meleeRange: 0.1
-  rotationSpeed: 1000
 --- !u!195 &387914494
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -927,7 +910,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387914491}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.38
   m_Height: 1.74
@@ -953,7 +936,38 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &387914498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387914491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12c2bc1bf8ec6b5448b851e74008c438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterManager: {fileID: 387914499}
+  anim: {fileID: 387914497}
+  brickParent: {fileID: 493540320}
+  brickTargetObj: {fileID: 1853252816}
+  rotationSpeed: 1000
+  cooldownWindow: 5
+  meleeRange: 0.1
+  agent: {fileID: 387914494}
+--- !u!114 &387914499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387914491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cf3ca47ba6a7043955c46b380278cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &493540320
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,13 +1013,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PoolParent: {fileID: 493540320}
-  cooldownWindow: 0.1
+  projectile: {fileID: 0}
   objectPoolBrickGreen: {fileID: 2015324477}
   objectPoolBrickPurple: {fileID: 747401218}
   objectPoolBrickRed: {fileID: 1853252818}
   objectPoolBrickYellow: {fileID: 1125298259}
   Row: 10
   Column: 12
+  ListPoolBrick: []
 --- !u!1 &549379815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,7 +1318,7 @@ GameObject:
   - component: {fileID: 747401217}
   - component: {fileID: 747401218}
   m_Layer: 0
-  m_Name: BrickPoolPurple
+  m_Name: Brick Purple(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1336,7 +1351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fff492ad1c6284391eae5e9634c76a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initPoolSize: 5
+  initPoolSize: 30
   objectToPool: {fileID: -1361112156665012837, guid: 446590a568e130948a5c93f50578c03e, type: 3}
 --- !u!1 &791259070
 GameObject:
@@ -1841,10 +1856,11 @@ GameObject:
   - component: {fileID: 1074819553}
   - component: {fileID: 1074819552}
   - component: {fileID: 1074819551}
-  - component: {fileID: 1074819550}
+  - component: {fileID: 1074819556}
+  - component: {fileID: 1074819555}
   m_Layer: 8
   m_Name: AIBot Purple
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1867,24 +1883,6 @@ Transform:
   m_Father: {fileID: 192242596}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1074819550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074819548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12c2bc1bf8ec6b5448b851e74008c438, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 1074819554}
-  agent: {fileID: 1074819551}
-  brickParent: {fileID: 493540320}
-  brickNameObj: Brick Purple(Clone)
-  meleeRange: 0.1
-  rotationSpeed: 1000
 --- !u!195 &1074819551
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1931,7 +1929,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074819548}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.38
   m_Height: 1.74
@@ -1957,7 +1955,38 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1074819555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074819548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12c2bc1bf8ec6b5448b851e74008c438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterManager: {fileID: 1074819556}
+  anim: {fileID: 1074819554}
+  brickParent: {fileID: 493540320}
+  brickTargetObj: {fileID: 747401216}
+  rotationSpeed: 1000
+  cooldownWindow: 5
+  meleeRange: 0.1
+  agent: {fileID: 1074819551}
+--- !u!114 &1074819556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074819548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cf3ca47ba6a7043955c46b380278cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1093432708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2070,7 +2099,7 @@ GameObject:
   - component: {fileID: 1125298258}
   - component: {fileID: 1125298259}
   m_Layer: 0
-  m_Name: BrickPoolYellow
+  m_Name: Brick Yellow(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2103,7 +2132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fff492ad1c6284391eae5e9634c76a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initPoolSize: 5
+  initPoolSize: 30
   objectToPool: {fileID: 756828360466987765, guid: 33650e5e13286d548b6055e61d2b47b2, type: 3}
 --- !u!1 &1204422007
 GameObject:
@@ -2330,10 +2359,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5509d46cf50eca47bccb95e908b77f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterManager: {fileID: 323147173682517389}
   anim: {fileID: 323147173682517388}
+  brickParent: {fileID: 493540320}
+  brickTargetObj: {fileID: 1125298257}
+  rotationSpeed: 1000
+  cooldownWindow: 5
+  meleeRange: 0.1
   _rigidbody: {fileID: 1310127508}
   _fixedJoystick: {fileID: 1066449863}
-  moveSpeed: 16
+  moveSpeed: 5
 --- !u!65 &1310127507
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2342,7 +2377,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 323147173675263522}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -3077,7 +3112,7 @@ GameObject:
   - component: {fileID: 1853252817}
   - component: {fileID: 1853252818}
   m_Layer: 0
-  m_Name: BrickPoolRed
+  m_Name: Brick Red(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3110,7 +3145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fff492ad1c6284391eae5e9634c76a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initPoolSize: 5
+  initPoolSize: 30
   objectToPool: {fileID: -6976681492968481233, guid: 3e952b1541b031e4591638e04050c96f, type: 3}
 --- !u!1 &1860219108
 GameObject:
@@ -3280,7 +3315,7 @@ GameObject:
   - component: {fileID: 2015324476}
   - component: {fileID: 2015324477}
   m_Layer: 0
-  m_Name: BrickPoolGreen
+  m_Name: Brick Green(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3313,7 +3348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fff492ad1c6284391eae5e9634c76a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initPoolSize: 5
+  initPoolSize: 30
   objectToPool: {fileID: -7436949459964598599, guid: 6aa89f744c32822439e9d46a306d85de, type: 3}
 --- !u!1 &2030281640
 GameObject:
@@ -4107,9 +4142,10 @@ GameObject:
   - component: {fileID: 1310127507}
   - component: {fileID: 1310127503}
   - component: {fileID: 1310127506}
+  - component: {fileID: 323147173682517389}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4614,7 +4650,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &323147173682517389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323147173675263522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cf3ca47ba6a7043955c46b380278cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &323147173686766412
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -11121,7 +11168,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!33 &5578141282012970160
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -12370,7 +12416,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &6763856659055969198
 Animator:
   serializedVersion: 5
@@ -12391,7 +12436,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &6763856659658264369
 Animator:
   serializedVersion: 5
@@ -12412,7 +12456,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &6763856660057927403
 Animator:
   serializedVersion: 5
@@ -12433,7 +12476,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &6763856660304273862
 Animator:
   serializedVersion: 5
@@ -12454,7 +12496,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &6763856660655452086
 Animator:
   serializedVersion: 5
@@ -12475,7 +12516,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &6763856660731814138
 Animator:
   serializedVersion: 5
@@ -12496,7 +12536,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &6763856660746602822
 Animator:
   serializedVersion: 5
@@ -12517,7 +12556,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &6763856660820943608
 Animator:
   serializedVersion: 5
@@ -12538,7 +12576,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &6763856660872669118
 Animator:
   serializedVersion: 5
@@ -12559,7 +12596,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &6763856661052423354
 Animator:
   serializedVersion: 5
@@ -12580,7 +12616,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &6763856661074629974
 Animator:
   serializedVersion: 5
@@ -12601,7 +12636,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!23 &6798614152736879823
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12717,7 +12751,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408772450076881
 Animator:
   serializedVersion: 5
@@ -12738,7 +12771,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408772459844462
 Animator:
   serializedVersion: 5
@@ -12759,7 +12791,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408772783401786
 Animator:
   serializedVersion: 5
@@ -12780,7 +12811,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408772802219538
 Animator:
   serializedVersion: 5
@@ -12801,7 +12831,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408772828375038
 Animator:
   serializedVersion: 5
@@ -12822,7 +12851,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408772890459118
 Animator:
   serializedVersion: 5
@@ -12843,7 +12871,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408772909894368
 Animator:
   serializedVersion: 5
@@ -12864,7 +12891,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408772922020434
 Animator:
   serializedVersion: 5
@@ -12885,7 +12911,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408772979645726
 Animator:
   serializedVersion: 5
@@ -12906,7 +12931,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408773049210134
 Animator:
   serializedVersion: 5
@@ -12927,7 +12951,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408773099229264
 Animator:
   serializedVersion: 5
@@ -12948,7 +12971,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408773515968424
 Animator:
   serializedVersion: 5
@@ -12969,7 +12991,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408773523730694
 Animator:
   serializedVersion: 5
@@ -12990,7 +13011,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408773539357719
 Animator:
   serializedVersion: 5
@@ -13011,7 +13031,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408773845081155
 Animator:
   serializedVersion: 5
@@ -13032,7 +13051,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408773868108139
 Animator:
   serializedVersion: 5
@@ -13053,7 +13071,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408773908926599
 Animator:
   serializedVersion: 5
@@ -13074,7 +13091,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408773973101719
 Animator:
   serializedVersion: 5
@@ -13095,7 +13111,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408773983708459
 Animator:
   serializedVersion: 5
@@ -13116,7 +13131,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408773995707801
 Animator:
   serializedVersion: 5
@@ -13137,7 +13151,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408774060206695
 Animator:
   serializedVersion: 5
@@ -13158,7 +13171,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408774116139631
 Animator:
   serializedVersion: 5
@@ -13179,7 +13191,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &7510408774167209769
 Animator:
   serializedVersion: 5
@@ -13200,7 +13211,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!33 &7526668808366689906
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -13329,7 +13339,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!137 &7770665422482694583
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -14365,7 +14374,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7770665422485810393}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.38
   m_Height: 1.74
@@ -14400,10 +14409,11 @@ GameObject:
   - component: {fileID: 7770665422485810390}
   - component: {fileID: 1747185281466957889}
   - component: {fileID: 7770665422485810394}
+  - component: {fileID: 7770665422485810398}
   - component: {fileID: 7770665422485810396}
   m_Layer: 8
   m_Name: AIBot Green
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14459,12 +14469,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c2bc1bf8ec6b5448b851e74008c438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterManager: {fileID: 7770665422485810398}
   anim: {fileID: 7770665422478385015}
-  agent: {fileID: 7770665422485810394}
   brickParent: {fileID: 493540320}
-  brickNameObj: Brick Green(Clone)
-  meleeRange: 0.1
+  brickTargetObj: {fileID: 2015324475}
   rotationSpeed: 1000
+  cooldownWindow: 5
+  meleeRange: 0.1
+  agent: {fileID: 7770665422485810394}
 --- !u!1 &7770665422485810397
 GameObject:
   m_ObjectHideFlags: 0
@@ -14481,6 +14493,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7770665422485810398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7770665422485810393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cf3ca47ba6a7043955c46b380278cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7770665422485810399
 GameObject:
   m_ObjectHideFlags: 0
@@ -14563,7 +14587,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &8686835402351382584
 Transform:
   m_ObjectHideFlags: 0
@@ -15021,7 +15044,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &8686835403524539290
 Transform:
   m_ObjectHideFlags: 0
