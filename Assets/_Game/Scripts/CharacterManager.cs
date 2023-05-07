@@ -6,7 +6,8 @@ using UnityEngine.Events;
 public class CharacterManager : MonoBehaviour
 {
     public UnityAction<GameObject> AddBrick;
-
+    public UnityAction<GameObject> RemoveBrick;
+    public UnityAction<GameObject> ClearBrick;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Brick")
@@ -14,6 +15,5 @@ public class CharacterManager : MonoBehaviour
             //Debug.Log(other.gameObject.name);
             AddBrick(other.gameObject);
         }
-
     }
 }

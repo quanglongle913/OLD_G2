@@ -1,3 +1,4 @@
+using DesignPatterns.ObjectPool;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,16 +12,23 @@ public class Character : MonoBehaviour
     [SerializeField] private CharacterManager characterManager;
     [SerializeField] private Animator anim;
     [SerializeField] private GameObject brickParent;
+
     [SerializeField] protected GameObject brickTargetObj;
     [SerializeField] private float rotationSpeed = 1000f;
     [SerializeField] protected float cooldownWindow = 5.0f;
-    
-    
+
+    [Tooltip("Pool Parent Object")]
+    [SerializeField] private GameObject BrickStackParent;
+    [SerializeField] private ObjectPool objectPoolBrickColor;
+
+    [SerializeField] protected int index;
+
 
     protected List<GameObject> listBrickObject;
 
     private string currentAnimName;
     public float meleeRange = 0.1f;
+    protected int brickCount;
 
     private void Start()
     {
@@ -33,12 +41,19 @@ public class Character : MonoBehaviour
         {
             characterManager.AddBrick += AddBrick;
         }
+        //Create Pooling Object in BrickStackParent of Player
+        GenerateNewObject(index);
+        SetPollBrickPos();
+        brickCount = 0;
     }
 
     //ham huy
     public virtual void OnDespawn()
     {
-
+        if (characterManager != null)
+        {
+            characterManager.AddBrick -= AddBrick;
+        }
     }
     public virtual void OnTriggerOtherPlayer()
     {
@@ -97,10 +112,52 @@ public class Character : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(direction);
     }
 
-    
+    private void SetPollBrickPos()
+    {
+        if (BrickStackParent.gameObject.transform.childCount > 0)
+        {
+            for (int i = 0; i < BrickStackParent.gameObject.transform.childCount; i++)
+            {
+                BrickStackParent.gameObject.transform.GetChild(i).gameObject.transform.localPosition = new Vector3(0, i, 0);
+                BrickStackParent.gameObject.transform.GetChild(i).gameObject.transform.localScale = new Vector3(1, 0.96f, 1);
+                BrickStackParent.gameObject.transform.GetChild(i).gameObject.SetActive(false);
+            }
+
+        }
+    }
+
+    private void GenerateNewObject(int index)
+    {
+        for (int i = 0; i < index; i++)
+        {
+            GameObject brickObject = objectPoolBrickColor.GetPooledObject().gameObject.gameObject;
+
+            if (brickObject == null)
+            {
+                return;
+            }
+            brickObject.transform.SetParent(BrickStackParent.transform);
+            brickObject.SetActive(true);
+        }
+
+    }
     protected void ActiveBrickForSeconds(float time, GameObject gameObject)
     {
-        StartCoroutine(ActiveBrickCoroutine(time, gameObject));
+        if (brickCount<index)
+        {
+            StartCoroutine(ActiveBrickCoroutine(time, gameObject));
+            brickCount++;
+            for (int i = 0; i < brickCount; i++)
+            {
+                if (!BrickStackParent.gameObject.transform.GetChild(i).gameObject.activeSelf)
+                {
+                    BrickStackParent.gameObject.transform.GetChild(i).gameObject.SetActive(true);
+                }
+
+            }
+        }
+        
+
     }
     protected IEnumerator ActiveBrickCoroutine(float time, GameObject gameObject)
     {
@@ -124,14 +181,17 @@ public class Character : MonoBehaviour
             }
         }
     }
+   
     private void AddBrick(GameObject arg0)
     {
         if (arg0.gameObject.name == brickTargetObj.gameObject.name)
         {
             // Debug.Log(brickTargetObj.gameObject.name);
             ActiveBrickForSeconds(cooldownWindow, arg0.gameObject);
+           
         }
     }
+
     private void RemoveBrick()
     {
         

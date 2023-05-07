@@ -32,29 +32,38 @@ public class Enemy : Character
     }
     private void Moving()
     {
-        listBrickObject = sortList(listBrickObject);
-        for (int i = 0; i < listBrickObject.Count; i++)
+        if (brickCount < index)
         {
-            if (isBrickTarget)
+            listBrickObject = sortList(listBrickObject);
+            for (int i = 0; i < listBrickObject.Count; i++)
             {
-                if (listBrickObject[i].gameObject.activeSelf)
+                if (isBrickTarget)
                 {
-                    //Debug.Log("OK1"); //code run enemy
-                    isBrickTarget = false;
-                    brickTarget = listBrickObject[i].gameObject;
-                    StartCoroutine(MoveCoroutine("Run", 0.2f, brickTarget));
+                    if (listBrickObject[i].gameObject.activeSelf)
+                    {
+                        //Debug.Log("OK1"); //code run enemy
+                        isBrickTarget = false;
+                        brickTarget = listBrickObject[i].gameObject;
+                        StartCoroutine(MoveCoroutine("Run", 0.2f, brickTarget));
+                    }
                 }
             }
-        }
 
-        if (brickTarget == null)
-            return;
-        if (IsInMeleeRangeOf(brickTarget.transform) && !isBrickTarget)
-        {
-            //Debug.Log("OK2");
-            ChangeAnim("Idle");
-            isBrickTarget = true;
+            if (brickTarget == null)
+                return;
+            if (IsInMeleeRangeOf(brickTarget.transform) && !isBrickTarget)
+            {
+                //Debug.Log("OK2");
+                ChangeAnim("Idle");
+                isBrickTarget = true;
+            }
         }
+        else
+        {   
+            Debug.Log("full stack brick");
+            ChangeAnim("Idle");
+        }
+        
     }
     IEnumerator MoveCoroutine(string animName, float time, GameObject ObjTarget)
     {

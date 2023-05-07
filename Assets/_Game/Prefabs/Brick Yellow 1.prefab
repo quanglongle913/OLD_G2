@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 756828360466987765}
   - component: {fileID: -2274422228950124158}
   m_Layer: 7
-  m_Name: Brick Yellow
+  m_Name: Brick Yellow 1
   m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

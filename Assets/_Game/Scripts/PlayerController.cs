@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody),typeof(BoxCollider))]
+[RequireComponent(typeof(Rigidbody),typeof(CapsuleCollider))]
 public class PlayerController : Character
 {
 
