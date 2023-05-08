@@ -60,7 +60,7 @@ public class Enemy : Character
         }
         else
         {   
-            Debug.Log("full stack brick");
+            //Debug.Log("full stack brick");
             ChangeAnim("Idle");
         }
         

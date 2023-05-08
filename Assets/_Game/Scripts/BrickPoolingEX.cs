@@ -5,29 +5,19 @@ using UnityEngine;
 
 
 // This is an example client that uses our simple object pool.
-public class BrickPoolingEX : MonoBehaviour
+public class BrickPoolingEX : DrawMap
 {
 
-    [Tooltip("Pool Parent Object")]
-    [SerializeField] private GameObject PoolParent;
-
-    //[SerializeField] float cooldownWindow = 5.0f;
     [Tooltip("Reference to Object Pool")]
     [SerializeField] private ObjectPool objectPoolBrickGreen;
     [SerializeField] private ObjectPool objectPoolBrickPurple;
     [SerializeField] private ObjectPool objectPoolBrickRed;
     [SerializeField] private ObjectPool objectPoolBrickYellow;
 
-    //[SerializeField] ObjectPool objectPool;
-
-
-    [SerializeField] private int Row;
-    [SerializeField] private int Column;
-
     [SerializeField] private List<ObjectPool> ListPoolBrick;
 
     private int poolSize;
-    //float nextTimeToShoot = 0;
+ 
 
     private void Start()
     {
@@ -39,7 +29,6 @@ public class BrickPoolingEX : MonoBehaviour
     }
     IEnumerator OnInitCoroutine(float time)
     {
-
         yield return new WaitForSeconds(time);
         poolSize = Row * Column;
         ListPoolBrick = new List<ObjectPool>();
@@ -48,7 +37,6 @@ public class BrickPoolingEX : MonoBehaviour
         ListPoolBrick.Add(objectPoolBrickRed);
         ListPoolBrick.Add(objectPoolBrickYellow);
         GenerateAllObject();
-        SetPollBrickPos();
     }
     private void SetPollBrickPos()
     {
@@ -200,5 +188,6 @@ public class BrickPoolingEX : MonoBehaviour
                     break;
             }
         }
+        SetPollBrickPos();
     }
 }

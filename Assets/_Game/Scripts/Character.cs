@@ -35,15 +35,16 @@ public class Character : MonoBehaviour
         OnInit();
     }
     public virtual void OnInit()
-    {
-        StartCoroutine(OnInitCoroutine(brickTargetObj, 0.2f));
+    {   
+        
+
+        StartCoroutine(OnInitCoroutine(brickTargetObj, 0.3f));
         if (characterManager != null)
         {
             characterManager.AddBrick += AddBrick;
         }
         //Create Pooling Object in BrickStackParent of Player
-        GenerateNewObject(index);
-        SetPollBrickPos();
+        StartCoroutine(OnCreateBrickStackPoolingObj(0.2f));
         brickCount = 0;
     }
 
@@ -111,8 +112,14 @@ public class Character : MonoBehaviour
         //PLayer
         transform.rotation = Quaternion.LookRotation(direction);
     }
+    protected IEnumerator OnCreateBrickStackPoolingObj(float time)
+    {
+        
+        yield return new WaitForSeconds(time);
+        GenerateNewObject(index);
 
-    private void SetPollBrickPos()
+    }
+    private void SetPoolBrickPos()
     {
         if (BrickStackParent.gameObject.transform.childCount > 0)
         {
@@ -139,25 +146,30 @@ public class Character : MonoBehaviour
             brickObject.transform.SetParent(BrickStackParent.transform);
             brickObject.SetActive(true);
         }
-
+        SetPoolBrickPos();
     }
     protected void ActiveBrickForSeconds(float time, GameObject gameObject)
     {
-        if (brickCount<index)
+        if (brickCount < index)
         {
             StartCoroutine(ActiveBrickCoroutine(time, gameObject));
             brickCount++;
-            for (int i = 0; i < brickCount; i++)
+            if (BrickStackParent.gameObject.transform.childCount==0)
             {
-                if (!BrickStackParent.gameObject.transform.GetChild(i).gameObject.activeSelf)
+                Debug.Log("Error create Birck Pooling in Character:" + transform.gameObject.name);
+                return;
+            }
+            else
+            {
+                for (int i = 0; i < brickCount; i++)
                 {
-                    BrickStackParent.gameObject.transform.GetChild(i).gameObject.SetActive(true);
+                    if (!BrickStackParent.gameObject.transform.GetChild(i).gameObject.activeSelf)
+                    {
+                        BrickStackParent.gameObject.transform.GetChild(i).gameObject.SetActive(true);
+                    }
                 }
-
             }
         }
-        
-
     }
     protected IEnumerator ActiveBrickCoroutine(float time, GameObject gameObject)
     {
