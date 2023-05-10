@@ -11,7 +11,6 @@ public class Enemy : Character
     private GameObject brickTarget;
 
     private bool isBrickTarget = true;
-
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -68,8 +67,19 @@ public class Enemy : Character
     IEnumerator MoveCoroutine(string animName, float time, GameObject ObjTarget)
     {
         yield return new WaitForSeconds(time);
+
         ChangeAnim(animName);
         MoveTowards(agent, ObjTarget.transform);
         RotateTowards(this.gameObject, ObjTarget.transform);
+    }
+    void OnDrawGizmos()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.black;
+        if (!isBrickTarget) 
+        {
+            Gizmos.DrawLine(brickTarget.transform.position, transform.position);
+        }
+        
     }
 }

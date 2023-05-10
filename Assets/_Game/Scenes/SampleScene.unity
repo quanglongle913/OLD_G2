@@ -331,52 +331,6 @@ Transform:
   m_Father: {fileID: 1338892904}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &61446903
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 61446904}
-  - component: {fileID: 61446905}
-  m_Layer: 0
-  m_Name: Brick Purple Stack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &61446904
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 61446903}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 316199922}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &61446905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 61446903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26fff492ad1c6284391eae5e9634c76a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initPoolSize: 30
-  objectToPool: {fileID: -1361112156665012837, guid: 5709d09533a433d46810498806708cd9, type: 3}
 --- !u!1 &111107557
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,10 +720,6 @@ Transform:
   - {fileID: 747401217}
   - {fileID: 1853252817}
   - {fileID: 1125298258}
-  - {fileID: 2016489326}
-  - {fileID: 61446904}
-  - {fileID: 1306908293}
-  - {fileID: 847477771}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1037,7 +987,7 @@ MonoBehaviour:
   rotationSpeed: 1000
   cooldownWindow: 5
   BrickStackParent: {fileID: 585138512}
-  objectPoolBrickColor: {fileID: 1306908294}
+  objectPoolBrickColor: {fileID: 1853252818}
   index: 10
   meleeRange: 0.1
   agent: {fileID: 387914494}
@@ -1696,52 +1646,6 @@ Transform:
   m_Father: {fileID: 1204422008}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &847477770
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 847477771}
-  - component: {fileID: 847477772}
-  m_Layer: 0
-  m_Name: Brick Yellow Stack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &847477771
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847477770}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 316199922}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &847477772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847477770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26fff492ad1c6284391eae5e9634c76a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initPoolSize: 30
-  objectToPool: {fileID: 756828360466987765, guid: d490ac3d9fbde304d9df42ce02ec049f, type: 3}
 --- !u!1 &868780596
 GameObject:
   m_ObjectHideFlags: 0
@@ -2236,7 +2140,7 @@ MonoBehaviour:
   rotationSpeed: 1000
   cooldownWindow: 5
   BrickStackParent: {fileID: 637499002107486011}
-  objectPoolBrickColor: {fileID: 61446905}
+  objectPoolBrickColor: {fileID: 747401218}
   index: 10
   meleeRange: 0.1
   agent: {fileID: 1074819551}
@@ -2590,52 +2494,6 @@ Transform:
   m_Father: {fileID: 2056002238}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 14.951512, y: -1.2219019, z: -82.32106}
---- !u!1 &1306908292
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1306908293}
-  - component: {fileID: 1306908294}
-  m_Layer: 0
-  m_Name: Brick Red Stack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1306908293
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306908292}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 316199922}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1306908294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306908292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26fff492ad1c6284391eae5e9634c76a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initPoolSize: 30
-  objectToPool: {fileID: -6976681492968481233, guid: cf4ae5fdb74eb1f45a662a6ea406b659, type: 3}
 --- !u!195 &1310127503
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2677,7 +2535,7 @@ MonoBehaviour:
   rotationSpeed: 1000
   cooldownWindow: 5
   BrickStackParent: {fileID: 637499000097237140}
-  objectPoolBrickColor: {fileID: 847477772}
+  objectPoolBrickColor: {fileID: 0}
   index: 10
   meleeRange: 0.1
   _rigidbody: {fileID: 1310127508}
@@ -3651,52 +3509,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initPoolSize: 30
   objectToPool: {fileID: -7436949459964598599, guid: 6aa89f744c32822439e9d46a306d85de, type: 3}
---- !u!1 &2016489325
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2016489326}
-  - component: {fileID: 2016489327}
-  m_Layer: 0
-  m_Name: Brick Green Stack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2016489326
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2016489325}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 316199922}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2016489327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2016489325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26fff492ad1c6284391eae5e9634c76a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initPoolSize: 30
-  objectToPool: {fileID: -7436949459964598599, guid: 6cbd6a7f3d0eaf84b95194bbc4b6bfca, type: 3}
 --- !u!1 &2030281640
 GameObject:
   m_ObjectHideFlags: 0
@@ -15133,7 +14945,7 @@ MonoBehaviour:
   rotationSpeed: 1000
   cooldownWindow: 5
   BrickStackParent: {fileID: 637499000227203854}
-  objectPoolBrickColor: {fileID: 2016489327}
+  objectPoolBrickColor: {fileID: 2015324477}
   index: 10
   meleeRange: 0.1
   agent: {fileID: 7770665422485810394}

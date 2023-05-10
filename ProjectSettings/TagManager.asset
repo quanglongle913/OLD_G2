@@ -8,6 +8,7 @@ TagManager:
   - BridgeTile
   - Brick
   - Enemy
+  - Brick Stack Object
   layers:
   - Default
   - TransparentFX

@@ -132,13 +132,14 @@ public class Character : MonoBehaviour
 
         }
     }
-
+    //Create Pooling Object in BrickStackParent of Player
     private void GenerateNewObject(int index)
     {
         for (int i = 0; i < index; i++)
         {
             GameObject brickObject = objectPoolBrickColor.GetPooledObject().gameObject.gameObject;
-
+            //Set Tag of Brick Stack Pool => unDuplicate tags
+            brickObject.gameObject.transform.tag = "Brick Stack Object";
             if (brickObject == null)
             {
                 return;
@@ -196,6 +197,7 @@ public class Character : MonoBehaviour
    
     private void AddBrick(GameObject arg0)
     {
+        //kiem tra lai ten cua Brick co tag ="Brick" (Brick tren san)
         if (arg0.gameObject.name == brickTargetObj.gameObject.name)
         {
             // Debug.Log(brickTargetObj.gameObject.name);
