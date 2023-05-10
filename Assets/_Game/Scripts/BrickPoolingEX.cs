@@ -9,15 +9,11 @@ public class BrickPoolingEX : DrawMap
 {
 
     [Tooltip("Reference to Object Pool")]
-    [SerializeField] private ObjectPool objectPoolBrickGreen;
-    [SerializeField] private ObjectPool objectPoolBrickPurple;
-    [SerializeField] private ObjectPool objectPoolBrickRed;
-    [SerializeField] private ObjectPool objectPoolBrickYellow;
-
     [SerializeField] private List<ObjectPool> ListPoolBrick;
-
+    //so luong vien gach
     private int poolSize;
- 
+
+    private List<Vector3> ListPoolBrickPos;
 
     private void Start()
     {
@@ -26,168 +22,72 @@ public class BrickPoolingEX : DrawMap
     private void OnInit()
     {
         StartCoroutine(OnInitCoroutine(0.1f));
+        ListPoolBrickPos = new List<Vector3>();
     }
     IEnumerator OnInitCoroutine(float time)
     {
         yield return new WaitForSeconds(time);
         poolSize = Row * Column;
-        ListPoolBrick = new List<ObjectPool>();
-        ListPoolBrick.Add(objectPoolBrickGreen);
-        ListPoolBrick.Add(objectPoolBrickPurple);
-        ListPoolBrick.Add(objectPoolBrickRed);
-        ListPoolBrick.Add(objectPoolBrickYellow);
         GenerateAllObject();
     }
-    private void SetPollBrickPos()
+    //Tao vi tri tri cua cac vien -> luu vao LIST
+    private void ScreatePoolBrickPos()
     {
-        if (PoolParent.gameObject.transform.childCount > 0)
+        for (int i = 0; i < Row; i++)
         {
-            for (int i = 0; i < Row; i++)
+            for (int j = 0; j < Column; j++)
             {
-                for (int j = 0; j < Column; j++)
-                {
-                    int index = Row * j + i;
-                    //row =12 column =10 ///TEST LOGIC
-                    //i=0 =>z=5 i=1=>z=4 => Z=5-i
-                    //j=0 x=-6,j=1 x=-5,j=2 x=-4,j=3 x=-3, x=5 j=10
-                    PoolParent.gameObject.transform.GetChild(index).gameObject.transform.position = new Vector3((j - (Row / 2)), 0.05f, ((Column / 2) - i));
-                    PoolParent.gameObject.transform.GetChild(index).gameObject.SetActive(true);
-                }
+                int index = Row * j + i;
+                //row =12 column =10 ///TEST LOGIC
+                //i=0 =>z=5 i=1=>z=4 => Z=5-i
+                //j=0 x=-6,j=1 x=-5,j=2 x=-4,j=3 x=-3, x=5 j=10
+                Vector3 item = new Vector3((j - (Row / 2)), 0.05f, ((Column / 2) - i));
+                ListPoolBrickPos.Add(item);
             }
         }
-
     }
-
-    private void GenerateNewObject(int index)
+    //Tao Gach
+    private void GenerateNewObject(int index,Vector3 _vector3)
     {
+
         //Debug.Log(ListPoolBrick.Count +" : Index"+ index);
         if (ListPoolBrick.Count >= 4)
         {
-            if (ListPoolBrick[index - 1] != null)
+            if (ListPoolBrick[index] != null)
             {
-                GameObject brickObject = ListPoolBrick[index - 1].GetPooledObject().gameObject.gameObject;
-
+                GameObject brickObject = ListPoolBrick[index].GetPooledObject().gameObject.gameObject;
                 if (brickObject == null)
                 {
                     return;
                 }
                 brickObject.transform.SetParent(PoolParent.transform);
+                brickObject.transform.position = _vector3;
                 brickObject.SetActive(true);
             }
         }
-
-
     }
+    // Tao Gach va set vi tri trong LIST vi tri-> xoa vi tri trong list da set
     private void GenerateAllObject()
     {
-        int coun1 = 0, coun2 = 0, coun3 = 0, coun4 = 0;
-        for (int i = 0; i < poolSize; i++)
+        ScreatePoolBrickPos();
+        //Debug.Log("Set brick");
+        for (int i = 0; i < ListPoolBrick.Count; i++)
         {
-            int randomIndex = Random.Range(1, 5);
-            switch (randomIndex)
+            for (int j=0; j<poolSize/4;j++) // j= 0->3 if count =4
             {
-                case 1:
-                    if (coun1 < poolSize / 4)
-                    {
-                        coun1++;
-                        GenerateNewObject(randomIndex);
-                    }
-                    else
-                    {
-                        int random = Random.Range(1, 4);
-                        if (random == 1)
-                        {
-                            goto case 2;
-                        }
-                        if (random == 2)
-                        {
-                            goto case 3;
-                        }
-                        if (random == 3)
-                        {
-                            goto case 4;
-                        }
-                        else goto default;
-                    }
-                    break;
-                case 2:
-
-                    if (coun2 < poolSize / 4)
-                    {
-                        coun2++;
-                        GenerateNewObject(randomIndex);
-                    }
-                    else
-                    {
-                        int random = Random.Range(1, 4);
-                        if (random == 1)
-                        {
-                            goto case 1;
-                        }
-                        if (random == 2)
-                        {
-                            goto case 3;
-                        }
-                        if (random == 3)
-                        {
-                            goto case 4;
-                        }
-                        else goto default;
-                    }
-                    break;
-                case 3:
-                    if (coun3 < poolSize / 4)
-                    {
-                        coun3++;
-                        GenerateNewObject(randomIndex);
-                    }
-                    else
-                    {
-                        int random = Random.Range(1, 4);
-                        if (random == 1)
-                        {
-                            goto case 1;
-                        }
-                        if (random == 2)
-                        {
-                            goto case 2;
-                        }
-                        if (random == 3)
-                        {
-                            goto case 4;
-                        }
-                        else goto default;
-                    }
-                    break;
-                case 4:
-                    if (coun4 < poolSize / 4)
-                    {
-                        coun4++;
-                        GenerateNewObject(randomIndex);
-                    }
-                    else
-                    {
-                        int random = Random.Range(1, 4);
-                        if (random == 1)
-                        {
-                            goto case 1;
-                        }
-                        if (random == 2)
-                        {
-                            goto case 2;
-                        }
-                        if (random == 3)
-                        {
-                            goto case 3;
-                        }
-                        else goto default;
-                    }
-                    break;
-                default:
-                    Debug.Log("Error");
-                    break;
+                int randomIndex = Random.Range(0, ListPoolBrickPos.Count);
+                GenerateNewObject(i,ListPoolBrickPos[randomIndex]);
+                ListPoolBrickPos.Remove(ListPoolBrickPos[randomIndex]);
             }
         }
-        SetPollBrickPos();
+        //chia 4 du thi ...
+        if (ListPoolBrickPos.Count>0)
+        {
+            for (int i = 0; i < ListPoolBrickPos.Count; i++)
+            {
+                GenerateNewObject(i, ListPoolBrickPos[i]);
+                ListPoolBrickPos.Remove(ListPoolBrickPos[i]);
+            }
+        }
     }
 }

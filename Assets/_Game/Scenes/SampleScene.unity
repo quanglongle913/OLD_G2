@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18030053, g: 0.22574452, b: 0.30695522, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1052,11 +1052,11 @@ MonoBehaviour:
   Column: 12
   Size_x: 0.4
   Size_z: 0.2
-  objectPoolBrickGreen: {fileID: 2015324477}
-  objectPoolBrickPurple: {fileID: 747401218}
-  objectPoolBrickRed: {fileID: 1853252818}
-  objectPoolBrickYellow: {fileID: 1125298259}
-  ListPoolBrick: []
+  ListPoolBrick:
+  - {fileID: 747401218}
+  - {fileID: 2015324477}
+  - {fileID: 1853252818}
+  - {fileID: 1125298259}
 --- !u!1 &549379815
 GameObject:
   m_ObjectHideFlags: 0
@@ -2535,7 +2535,7 @@ MonoBehaviour:
   rotationSpeed: 1000
   cooldownWindow: 5
   BrickStackParent: {fileID: 637499000097237140}
-  objectPoolBrickColor: {fileID: 0}
+  objectPoolBrickColor: {fileID: 1125298259}
   index: 10
   meleeRange: 0.1
   _rigidbody: {fileID: 1310127508}
