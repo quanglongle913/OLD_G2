@@ -80,7 +80,7 @@ public class Character : MonoBehaviour
     {
         agent.SetDestination(target.position);
     }
-    protected List<GameObject> sortList(List<GameObject> listObj)
+    protected List<GameObject> sortListBuyDistance(List<GameObject> listObj)
     {
         //sap xep theo khoang cach gan nhat voi Enemy
         GameObject gameObject;

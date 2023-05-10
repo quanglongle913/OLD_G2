@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+public enum ColorType { None = 0, Red = 1, Blue = 2, Green = 3, Violet = 4, }
+
 public class Enemy : Character
 {
     [SerializeField] private NavMeshAgent agent;
@@ -33,7 +36,7 @@ public class Enemy : Character
     {
         if (brickCount < index)
         {
-            listBrickObject = sortList(listBrickObject);
+            listBrickObject = sortListBuyDistance(listBrickObject);
             for (int i = 0; i < listBrickObject.Count; i++)
             {
                 if (isBrickTarget)

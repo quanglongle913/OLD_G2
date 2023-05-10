@@ -15,6 +15,8 @@ public class BrickPoolingEX : DrawMap
 
     private List<Vector3> ListPoolBrickPos;
 
+    private List<GameObject> list = new();
+
     private void Start()
     {
         OnInit();
@@ -55,7 +57,7 @@ public class BrickPoolingEX : DrawMap
         {
             if (ListPoolBrick[index] != null)
             {
-                GameObject brickObject = ListPoolBrick[index].GetPooledObject().gameObject.gameObject;
+                GameObject brickObject = ListPoolBrick[index].GetPooledObject().gameObject;
                 if (brickObject == null)
                 {
                     return;
@@ -63,9 +65,17 @@ public class BrickPoolingEX : DrawMap
                 brickObject.transform.SetParent(PoolParent.transform);
                 brickObject.transform.position = _vector3;
                 brickObject.SetActive(true);
+
+                list.Add(brickObject);
             }
         }
     }
+
+    public BrickPoolingEX SeekBrick(Color color)
+    {
+        return null;
+    }
+
     // Tao Gach va set vi tri trong LIST vi tri-> xoa vi tri trong list da set
     private void GenerateAllObject()
     {
